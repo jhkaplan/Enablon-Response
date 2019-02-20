@@ -66,12 +66,22 @@ class ViewController: FormViewController {
                     let responseRow: CheckRow! = self.form.rowBy(tag: "ResponseRequiredBool")
                     let responseSelection = responseRow!.value
                     
+//                    let locationRow: MultivaluedSection! = self.form.rowBy(tag: "recipient")
+//                    let locationSelection = locationRow!.values()
+                    
                     let valuesDictionary = self.form.values()
+                    
+                    let locationSelection = self.form.rowBy(tag: "recipient")!.baseValue! ?? ""
+//                    let test = locationSelection as! [String: AnyHashable]
                     
                     print(nameValue!)
                     print(messageValue!)
                     print(responseSelection!)
-                    print(valuesDictionary)
+                
+                    
+                    print(locationSelection)
+                    print(test)
+
                     
                     /* Send Alert */
                     
@@ -93,13 +103,13 @@ class ViewController: FormViewController {
                     func postToZapier() {
                         /* Send Zapier Webhook Call */
                         
-                        let alertParameters = ["alertMessageText": messageValue!, "alertName": nameValue!, "alertRecipientLocation": "Denver"]
+                        let alertParameters = ["alertMessageText": messageValue!, "alertName": nameValue!, "alertRecipientLocation": locationSelection]
                         
-                        guard let devURL = URL(string: "https://hooks.zapier.com/hooks/catch/2853627/p9g6g5/") else { return }
+                        guard let devURL = URL(string: "https://hooks.zapier.com/hooks/catch/2853627/p5e7iz/") else { return }
                         
                         guard let prodURL = URL(string: "https://hooks.zapier.com/hooks/catch/2853627/p2moc4/") else { return }
                         
-                        var request =  URLRequest(url: prodURL)
+                        var request =  URLRequest(url: devURL)
                         
                         request.httpMethod = "POST"
                         guard let httpBody = try? JSONSerialization.data(withJSONObject: alertParameters, options: []) else {
@@ -124,7 +134,7 @@ class ViewController: FormViewController {
                         
                     }
                     
-                postToZapier()
+//                postToZapier()
 
                 })
 
