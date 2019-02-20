@@ -50,8 +50,6 @@ class ViewController: FormViewController {
                 $0.tag = "recipient"
             }
         
-    
-        
         
         form +++ Section()
             <<< ButtonRow() {
@@ -66,21 +64,22 @@ class ViewController: FormViewController {
                     let responseRow: CheckRow! = self.form.rowBy(tag: "ResponseRequiredBool")
                     let responseSelection = responseRow!.value
                     
-//                    let locationRow: MultivaluedSection! = self.form.rowBy(tag: "recipient")
-//                    let locationSelection = locationRow!.values()
-                    
                     let valuesDictionary = self.form.values()
+
                     
-                    let locationSelection = self.form.rowBy(tag: "recipient")!.baseValue! ?? ""
-//                    let test = locationSelection as! [String: AnyHashable]
+                    let locationSelection = self.form.rowBy(tag: "recipient").flatMap({ (row) -> String? in
+                        if let row = row as? MultipleSelectorRow<String> {
+                            return row.value?.joined(separator: ",")
+                        }
+                        return nil
+                    })
+                    
+                    print(locationSelection ?? "Empty")
                     
                     print(nameValue!)
                     print(messageValue!)
                     print(responseSelection!)
-                
-                    
                     print(locationSelection)
-                    print(test)
 
                     
                     /* Send Alert */
@@ -134,7 +133,7 @@ class ViewController: FormViewController {
                         
                     }
                     
-//                postToZapier()
+                postToZapier()
 
                 })
 
