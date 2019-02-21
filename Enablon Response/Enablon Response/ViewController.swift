@@ -43,6 +43,13 @@ class ViewController: FormViewController {
                 row.title = "Response Required?"
         }
         
+            <<< ActionSheetRow<String>() {
+                $0.title = "Severity"
+                $0.selectorTitle = "Select Severity"
+                $0.options = ["1 - Low","2 - Medium","3 - High"]
+//                $0.value = "Two"    // initially selected
+        }
+        
         form +++ Section("Select Message Recipients")
             <<< MultipleSelectorRow<String>() {
                 $0.title = "Select Locations"
@@ -63,8 +70,6 @@ class ViewController: FormViewController {
                     
                     let responseRow: CheckRow! = self.form.rowBy(tag: "ResponseRequiredBool")
                     let responseSelection = responseRow!.value
-                    
-                    let valuesDictionary = self.form.values()
 
                     
                     let locationSelection = self.form.rowBy(tag: "recipient").flatMap({ (row) -> String? in
@@ -108,7 +113,7 @@ class ViewController: FormViewController {
                         
                         guard let prodURL = URL(string: "https://hooks.zapier.com/hooks/catch/2853627/p2moc4/") else { return }
                         
-                        var request =  URLRequest(url: devURL)
+                        var request =  URLRequest(url: prodURL)
                         
                         request.httpMethod = "POST"
                         guard let httpBody = try? JSONSerialization.data(withJSONObject: alertParameters, options: []) else {
