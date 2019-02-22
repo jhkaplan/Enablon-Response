@@ -45,6 +45,7 @@ class ViewController: FormViewController {
         
             <<< ActionSheetRow<String>() {
                 $0.title = "Severity"
+                $0.tag = "Severity"
                 $0.selectorTitle = "Select Severity"
                 $0.options = ["1 - Low","2 - Medium","3 - High"]
 //                $0.value = "Two"    // initially selected
@@ -69,7 +70,7 @@ class ViewController: FormViewController {
                     let nameValue = nameRow!.value
                     
                     let responseRow: CheckRow! = self.form.rowBy(tag: "ResponseRequiredBool")
-                    let responseSelection = responseRow!.value
+                    let responseSelection = responseRow!.value ?? false
 
                     
                     let locationSelection = self.form.rowBy(tag: "recipient").flatMap({ (row) -> String? in
@@ -79,12 +80,15 @@ class ViewController: FormViewController {
                         return nil
                     })
                     
+                    guard let alertSeverity = self.form.rowBy(tag: "Severity")?.baseValue else { return }
+                    
                     print(locationSelection ?? "Empty")
                     
                     print(nameValue!)
                     print(messageValue!)
-                    print(responseSelection!)
-                    print(locationSelection)
+                    print(responseSelection)
+                    print(locationSelection!)
+                    print(alertSeverity)
 
                     
                     /* Send Alert */
@@ -102,12 +106,13 @@ class ViewController: FormViewController {
                     self.form.rowBy(tag: "AlertName")?.baseValue = ""
                     self.form.rowBy(tag: "ResponseRequiredBool")?.baseValue = nil
                     self.form.rowBy(tag: "recipient")?.baseValue = ""
+                    self.form.rowBy(tag: "Severity")?.baseValue = ""
                     
                     
                     func postToZapier() {
                         /* Send Zapier Webhook Call */
                         
-                        let alertParameters = ["alertMessageText": messageValue!, "alertName": nameValue!, "alertRecipientLocation": locationSelection]
+                        let alertParameters = ["alertMessageText": messageValue!, "alertName": nameValue!, "alertRecipientLocation": locationSelection, "responseRequired": responseSelection, "severity": alertSeverity] as [String : Any]
                         
                         guard let devURL = URL(string: "https://hooks.zapier.com/hooks/catch/2853627/p5e7iz/") else { return }
                         
