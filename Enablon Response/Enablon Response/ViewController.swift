@@ -54,7 +54,7 @@ class ViewController: FormViewController {
         form +++ Section("Select Message Recipients")
             <<< MultipleSelectorRow<String>() {
                 $0.title = "Select Locations"
-                $0.options = ["SPF Australia","Chicago","Denver", "Paris"]
+                $0.options = ["CHI - Silver Runs", "DEN - Whiteleaf","PAR - Bluesky", "PER - North Star"]
                 $0.tag = "recipient"
             }
         
