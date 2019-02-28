@@ -29,6 +29,10 @@ class ViewController: FormViewController {
     
     func createAlertForm() {
         
+        let responseOption1Default = "I'm Safe"
+        let responseOption2Default = "I Need Assistance"
+        
+        
         form +++ Section("Alert Info")
             
             <<< TextRow("AlertName") { row in
@@ -57,7 +61,7 @@ class ViewController: FormViewController {
                     return !((form.rowBy(tag: "ResponseRequiredBool") as? CheckRow)?.value ?? false)
                 })
                 row.title = "Press 1 for"
-                row.value = "I'm Safe"
+                row.value = responseOption1Default
         }
         
             <<< TextRow("Response2") { row in
@@ -65,7 +69,7 @@ class ViewController: FormViewController {
                     return !((form.rowBy(tag: "ResponseRequiredBool") as? CheckRow)?.value ?? false)
                 })
                 row.title = "Press 2 for"
-                row.value = "I Need Assistance"
+                row.value = responseOption2Default
         }
         
         form +++ Section("Select Message Recipients")
@@ -132,6 +136,8 @@ class ViewController: FormViewController {
                     self.form.rowBy(tag: "ResponseRequiredBool")?.baseValue = nil
                     self.form.rowBy(tag: "recipient")?.baseValue = ""
                     self.form.rowBy(tag: "Severity")?.baseValue = ""
+                    self.form.rowBy(tag: "Response1")?.baseValue = responseOption1Default
+                    self.form.rowBy(tag: "Response2")?.baseValue = responseOption2Default
                     
                     
                     func postToZapier() {
