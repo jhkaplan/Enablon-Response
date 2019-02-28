@@ -366,7 +366,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 93JW9ALS9P;
+				DEVELOPMENT_TEAM = 35GUHGAHK9;
 				INFOPLIST_FILE = "Enablon Response/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -387,7 +387,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 93JW9ALS9P;
+				DEVELOPMENT_TEAM = 35GUHGAHK9;
 				INFOPLIST_FILE = "Enablon Response/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

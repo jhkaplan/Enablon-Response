@@ -39,9 +39,6 @@ class ViewController: FormViewController {
                 row.title = "Alert Message Body"
                 row.placeholder = "Alert Message"
             }
-            <<< CheckRow("ResponseRequiredBool") { row in
-                row.title = "Response Required?"
-        }
         
             <<< ActionSheetRow<String>() {
                 $0.title = "Severity"
@@ -49,6 +46,26 @@ class ViewController: FormViewController {
                 $0.selectorTitle = "Select Severity"
                 $0.options = ["1 - Low","2 - Medium","3 - High"]
 //                $0.value = "Two"    // initially selected
+        }
+        
+        form +++ Section("Response Options")
+            <<< CheckRow("ResponseRequiredBool") { row in
+                row.title = "Response Required?"
+        }
+            <<< TextRow("Response1") { row in
+                row.hidden = Condition.function(["ResponseRequiredBool"], { form in
+                    return !((form.rowBy(tag: "ResponseRequiredBool") as? CheckRow)?.value ?? false)
+                })
+                row.title = "Press 1 for"
+                row.value = "I'm Safe"
+        }
+        
+            <<< TextRow("Response2") { row in
+                row.hidden = Condition.function(["ResponseRequiredBool"], { form in
+                    return !((form.rowBy(tag: "ResponseRequiredBool") as? CheckRow)?.value ?? false)
+                })
+                row.title = "Press 2 for"
+                row.value = "I Need Assistance"
         }
         
         form +++ Section("Select Message Recipients")
@@ -71,6 +88,12 @@ class ViewController: FormViewController {
                     
                     let responseRow: CheckRow! = self.form.rowBy(tag: "ResponseRequiredBool")
                     let responseSelection = responseRow!.value ?? false
+                    
+                    let responseOpt1Row: TextRow! = self.form.rowBy(tag: "Response1")
+                    guard let responseOpt1 = responseOpt1Row!.value else { return }
+                    
+                    let responseOpt2Row: TextRow! = self.form.rowBy(tag: "Response2")
+                    guard let responseOpt2 = responseOpt2Row!.value else { return }
 
                     
                     let locationSelection = self.form.rowBy(tag: "recipient").flatMap({ (row) -> String? in
@@ -89,6 +112,8 @@ class ViewController: FormViewController {
                     print(responseSelection)
                     print(locationSelection!)
                     print(alertSeverity)
+                    print(responseOpt1)
+                    print(responseOpt2)
 
                     
                     /* Send Alert */
@@ -112,7 +137,7 @@ class ViewController: FormViewController {
                     func postToZapier() {
                         /* Send Zapier Webhook Call */
                         
-                        let alertParameters = ["alertMessageText": messageValue!, "alertName": nameValue!, "alertRecipientLocation": locationSelection, "responseRequired": responseSelection, "severity": alertSeverity] as [String : Any]
+                        let alertParameters = ["alertMessageText": messageValue!, "alertName": nameValue!, "alertRecipientLocation": locationSelection, "responseRequired": responseSelection, "severity": alertSeverity, "responseOpt1": responseOpt1, "responseOpt2": responseOpt2] as [String : Any]
                         
                         guard let devURL = URL(string: "https://hooks.zapier.com/hooks/catch/2853627/p5e7iz/") else { return }
                         
