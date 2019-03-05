@@ -9,11 +9,16 @@
 /* Begin PBXBuildFile section */
 		1B1CF3BC491AA566A32A9AF7 /* Pods_Enablon_Response.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EE06CA6EE6408A717B7E6DE /* Pods_Enablon_Response.framework */; };
 		99050A762217213B00417FB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99050A752217213B00417FB2 /* AppDelegate.swift */; };
-		99050A782217213B00417FB2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99050A772217213B00417FB2 /* ViewController.swift */; };
+		99050A782217213B00417FB2 /* CreateAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99050A772217213B00417FB2 /* CreateAlertVC.swift */; };
 		99050A7B2217213B00417FB2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99050A792217213B00417FB2 /* Main.storyboard */; };
 		99050A7E2217213B00417FB2 /* Enablon_Response.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 99050A7C2217213B00417FB2 /* Enablon_Response.xcdatamodeld */; };
 		99050A802217213C00417FB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99050A7F2217213C00417FB2 /* Assets.xcassets */; };
 		99050A832217213C00417FB2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99050A812217213C00417FB2 /* LaunchScreen.storyboard */; };
+		9964AC57222DE65B00D1B7F7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9964AC56222DE65B00D1B7F7 /* GoogleService-Info.plist */; };
+		9964AC59222ECFC400D1B7F7 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9964AC58222ECFC400D1B7F7 /* SignInVC.swift */; };
+		99ADC023222EED7C00C79537 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99ADC022222EED7C00C79537 /* SignUpViewController.swift */; };
+		99ADC025222EF02A00C79537 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99ADC024222EF02A00C79537 /* AuthenticationServices.framework */; };
+		99ADC028222EF13E00C79537 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99ADC027222EF13E00C79537 /* MenuViewController.swift */; };
 		99BC188C221CA27900E7D4A7 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BC188B221CA27900E7D4A7 /* Alert.swift */; };
 /* End PBXBuildFile section */
 
@@ -22,12 +27,18 @@
 		830BF15B0E44A726DF02E4AE /* Pods-Enablon Response.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Enablon Response.release.xcconfig"; path = "Target Support Files/Pods-Enablon Response/Pods-Enablon Response.release.xcconfig"; sourceTree = "<group>"; };
 		99050A722217213B00417FB2 /* Enablon Response.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Enablon Response.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		99050A752217213B00417FB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		99050A772217213B00417FB2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		99050A772217213B00417FB2 /* CreateAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAlertVC.swift; sourceTree = "<group>"; };
 		99050A7A2217213B00417FB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		99050A7D2217213B00417FB2 /* Enablon_Response.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Enablon_Response.xcdatamodel; sourceTree = "<group>"; };
 		99050A7F2217213C00417FB2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		99050A822217213C00417FB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99050A842217213C00417FB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9964AC56222DE65B00D1B7F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9964AC58222ECFC400D1B7F7 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
+		99ADC022222EED7C00C79537 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		99ADC024222EF02A00C79537 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
+		99ADC026222EF02A00C79537 /* Enablon Response.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Enablon Response.entitlements"; sourceTree = "<group>"; };
+		99ADC027222EF13E00C79537 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		99BC188B221CA27900E7D4A7 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		9EE06CA6EE6408A717B7E6DE /* Pods_Enablon_Response.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Enablon_Response.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -37,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99ADC025222EF02A00C79537 /* AuthenticationServices.framework in Frameworks */,
 				1B1CF3BC491AA566A32A9AF7 /* Pods_Enablon_Response.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,14 +86,19 @@
 		99050A742217213B00417FB2 /* Enablon Response */ = {
 			isa = PBXGroup;
 			children = (
+				99ADC026222EF02A00C79537 /* Enablon Response.entitlements */,
 				99050A752217213B00417FB2 /* AppDelegate.swift */,
-				99050A772217213B00417FB2 /* ViewController.swift */,
+				9964AC58222ECFC400D1B7F7 /* SignInVC.swift */,
+				99ADC022222EED7C00C79537 /* SignUpViewController.swift */,
+				99050A772217213B00417FB2 /* CreateAlertVC.swift */,
 				99BC188B221CA27900E7D4A7 /* Alert.swift */,
+				99ADC027222EF13E00C79537 /* MenuViewController.swift */,
 				99050A792217213B00417FB2 /* Main.storyboard */,
 				99050A7F2217213C00417FB2 /* Assets.xcassets */,
 				99050A812217213C00417FB2 /* LaunchScreen.storyboard */,
 				99050A842217213C00417FB2 /* Info.plist */,
 				99050A7C2217213B00417FB2 /* Enablon_Response.xcdatamodeld */,
+				9964AC56222DE65B00D1B7F7 /* GoogleService-Info.plist */,
 			);
 			path = "Enablon Response";
 			sourceTree = "<group>";
@@ -89,6 +106,7 @@
 		A9D4030427662682AA7C3837 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				99ADC024222EF02A00C79537 /* AuthenticationServices.framework */,
 				9EE06CA6EE6408A717B7E6DE /* Pods_Enablon_Response.framework */,
 			);
 			name = Frameworks;
@@ -106,6 +124,7 @@
 				99050A6F2217213B00417FB2 /* Frameworks */,
 				99050A702217213B00417FB2 /* Resources */,
 				3EBAD542AB3FE162579EAA8E /* [CP] Embed Pods Frameworks */,
+				E1085056617653E04B4D0E96 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -128,6 +147,14 @@
 				TargetAttributes = {
 					99050A712217213B00417FB2 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.AutoFillCredentialProvider = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -155,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99050A832217213C00417FB2 /* LaunchScreen.storyboard in Resources */,
+				9964AC57222DE65B00D1B7F7 /* GoogleService-Info.plist in Resources */,
 				99050A802217213C00417FB2 /* Assets.xcassets in Resources */,
 				99050A7B2217213B00417FB2 /* Main.storyboard in Resources */,
 			);
@@ -173,12 +201,18 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Enablon Response/Pods-Enablon Response-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -207,6 +241,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E1085056617653E04B4D0E96 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Enablon Response/Pods-Enablon Response-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Enablon Response/Pods-Enablon Response-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -214,10 +270,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99050A782217213B00417FB2 /* ViewController.swift in Sources */,
+				99ADC023222EED7C00C79537 /* SignUpViewController.swift in Sources */,
+				99050A782217213B00417FB2 /* CreateAlertVC.swift in Sources */,
 				99050A7E2217213B00417FB2 /* Enablon_Response.xcdatamodeld in Sources */,
+				99ADC028222EF13E00C79537 /* MenuViewController.swift in Sources */,
 				99BC188C221CA27900E7D4A7 /* Alert.swift in Sources */,
 				99050A762217213B00417FB2 /* AppDelegate.swift in Sources */,
+				9964AC59222ECFC400D1B7F7 /* SignInVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +423,7 @@
 			baseConfigurationReference = 070CF42C200D2898641D7636 /* Pods-Enablon Response.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Enablon Response/Enablon Response.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 35GUHGAHK9;
@@ -385,6 +445,7 @@
 			baseConfigurationReference = 830BF15B0E44A726DF02E4AE /* Pods-Enablon Response.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Enablon Response/Enablon Response.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 35GUHGAHK9;
