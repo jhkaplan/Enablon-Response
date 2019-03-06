@@ -43,5 +43,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
+	<key>NSLocationUsageDescription</key>
+	<string>We use your location to create an event location for the alert.</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>We use your location to create an event location for the alert.</string>
 </dict>
 </plist>
