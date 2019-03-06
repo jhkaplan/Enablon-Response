@@ -84,12 +84,15 @@ class ViewController: FormViewController, CLLocationManagerDelegate {
         }
         
         form +++ Section("Response Options")
-            <<< CheckRow("ResponseRequiredBool") { row in
+//            <<< CheckRow("ResponseRequiredBool1") { row in
+//                row.title = "Response Required?"
+//        }
+            <<< SwitchRow("ResponseRequiredBool") { row in
                 row.title = "Response Required?"
-        }
+            }
             <<< TextRow("Response1") { row in
                 row.hidden = Condition.function(["ResponseRequiredBool"], { form in
-                    return !((form.rowBy(tag: "ResponseRequiredBool") as? CheckRow)?.value ?? false)
+                    return !((form.rowBy(tag: "ResponseRequiredBool") as? SwitchRow)?.value ?? false)
                 })
                 row.title = "Press 1 for"
                 row.value = responseOption1Default
@@ -97,7 +100,7 @@ class ViewController: FormViewController, CLLocationManagerDelegate {
         
             <<< TextRow("Response2") { row in
                 row.hidden = Condition.function(["ResponseRequiredBool"], { form in
-                    return !((form.rowBy(tag: "ResponseRequiredBool") as? CheckRow)?.value ?? false)
+                    return !((form.rowBy(tag: "ResponseRequiredBool") as? SwitchRow)?.value ?? false)
                 })
                 row.title = "Press 2 for"
                 row.value = responseOption2Default
@@ -126,7 +129,7 @@ class ViewController: FormViewController, CLLocationManagerDelegate {
                     guard let locationGPSLonValue  = locationGPSSelection!.value?.coordinate.longitude else { return }
                     let locationGPSCoordinates = "\(locationGPSLatValue),\(locationGPSLonValue)"
                     
-                    let responseRow: CheckRow! = self.form.rowBy(tag: "ResponseRequiredBool")
+                    let responseRow: SwitchRow! = self.form.rowBy(tag: "ResponseRequiredBool")
                     let responseSelection = responseRow!.value ?? false
                     
                     let responseOpt1Row: TextRow! = self.form.rowBy(tag: "Response1")
