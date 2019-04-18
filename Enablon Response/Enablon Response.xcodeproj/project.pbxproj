@@ -14,6 +14,8 @@
 		99050A7E2217213B00417FB2 /* Enablon_Response.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 99050A7C2217213B00417FB2 /* Enablon_Response.xcdatamodeld */; };
 		99050A802217213C00417FB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99050A7F2217213C00417FB2 /* Assets.xcassets */; };
 		99050A832217213C00417FB2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99050A812217213C00417FB2 /* LaunchScreen.storyboard */; };
+		995CF63B2265068C00393E5A /* AlertsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995CF63A2265068C00393E5A /* AlertsListTableViewController.swift */; };
+		995CF63D226513A600393E5A /* AlertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995CF63C226513A600393E5A /* AlertCell.swift */; };
 		99BC188C221CA27900E7D4A7 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BC188B221CA27900E7D4A7 /* Alert.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +30,8 @@
 		99050A7F2217213C00417FB2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		99050A822217213C00417FB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99050A842217213C00417FB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		995CF63A2265068C00393E5A /* AlertsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsListTableViewController.swift; sourceTree = "<group>"; };
+		995CF63C226513A600393E5A /* AlertCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCell.swift; sourceTree = "<group>"; };
 		99BC188B221CA27900E7D4A7 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		9EE06CA6EE6408A717B7E6DE /* Pods_Enablon_Response.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Enablon_Response.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -78,6 +82,8 @@
 				99050A772217213B00417FB2 /* ViewController.swift */,
 				99BC188B221CA27900E7D4A7 /* Alert.swift */,
 				99050A792217213B00417FB2 /* Main.storyboard */,
+				995CF63A2265068C00393E5A /* AlertsListTableViewController.swift */,
+				995CF63C226513A600393E5A /* AlertCell.swift */,
 				99050A7F2217213C00417FB2 /* Assets.xcassets */,
 				99050A812217213C00417FB2 /* LaunchScreen.storyboard */,
 				99050A842217213C00417FB2 /* Info.plist */,
@@ -214,9 +220,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				995CF63D226513A600393E5A /* AlertCell.swift in Sources */,
 				99050A782217213B00417FB2 /* ViewController.swift in Sources */,
 				99050A7E2217213B00417FB2 /* Enablon_Response.xcdatamodeld in Sources */,
 				99BC188C221CA27900E7D4A7 /* Alert.swift in Sources */,
+				995CF63B2265068C00393E5A /* AlertsListTableViewController.swift in Sources */,
 				99050A762217213B00417FB2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -109,7 +109,7 @@ class ViewController: FormViewController, CLLocationManagerDelegate {
         form +++ Section("Select Message Recipients")
             <<< MultipleSelectorRow<String>() {
                 $0.title = "Select Locations"
-                $0.options = ["CHI - Silver Runs", "DEN - Whiteleaf","PAR - Bluesky", "PER - North Star"]
+                $0.options = ["CHI - Silver Runs", "DEN - Whiteleaf","HOU - North Star", "PAR - Bluesky"]
                 $0.tag = "recipient"
             }
         
