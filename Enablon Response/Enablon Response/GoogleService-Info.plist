@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>165995522256-d6li4gh4h588an4nsdstd1o4q3b061jk.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.165995522256-d6li4gh4h588an4nsdstd1o4q3b061jk</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCD9Im1GKdrsYOdoXvVhNTvA46rDEhUaZc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>165995522256</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.enablon.Response</string>
+	<key>PROJECT_ID</key>
+	<string>enablon-innovation-labs</string>
+	<key>STORAGE_BUCKET</key>
+	<string>enablon-innovation-labs.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:165995522256:ios:35f76c5537c9031e</string>
+	<key>DATABASE_URL</key>
+	<string>https://enablon-innovation-labs.firebaseio.com</string>
+</dict>
+</plist>
