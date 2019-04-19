@@ -1,10 +1,3 @@
-//
-//  AlertsListTableViewController.swift
-//  Enablon Response
-//
-//  Created by Josh Kaplan on 4/15/19.
-//  Copyright © 2019 Josh Kaplan. All rights reserved.
-//
 
 import UIKit
 
@@ -13,7 +6,7 @@ struct CellData {
     let alertMessage : String?
 }
 
-class AlertsListTableViewController: UITableViewController {
+class AlertsTableViewController: UITableViewController {
     
     var data = [CellData]()
     
@@ -23,15 +16,17 @@ class AlertsListTableViewController: UITableViewController {
         data = [CellData.init(alertName: "Alert Name 1", alertMessage: "Alert Message 1"), CellData.init(alertName: "Alert Name 2", alertMessage: "Alert Message 2")]
         
         self.tableView.register(AlertCell.self, forCellReuseIdentifier: "alert")
-        
-        
-        
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        FirebaseService.getAllAlerts { (data) in
+            guard let alerts = data else {
+                print("failed to fetch data")
+                return
+            }
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+            for alert in alerts {
+                print(alert.name)
+            }
+        }
     }
 
     // MARK: - Table view data source

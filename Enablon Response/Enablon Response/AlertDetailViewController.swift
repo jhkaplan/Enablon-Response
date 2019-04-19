@@ -1,10 +1,3 @@
-//
-//  AlertDetailViewController.swift
-//  Enablon Response
-//
-//  Created by Josh Kaplan on 4/18/19.
-//  Copyright © 2019 Josh Kaplan. All rights reserved.
-//
 
 import UIKit
 

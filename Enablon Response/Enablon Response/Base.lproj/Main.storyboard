@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Alerts List Table View Controller-->
+        <!--Alerts Table View Controller-->
         <scene sceneID="fkj-8s-Shc">
             <objects>
-                <tableViewController id="CXH-FU-Nd5" customClass="AlertsListTableViewController" customModule="Enablon_Response" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="CXH-FU-Nd5" customClass="AlertsTableViewController" customModule="Enablon_Response" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="DF4-f6-xAe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

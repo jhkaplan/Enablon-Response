@@ -10,6 +10,7 @@
 		1B1CF3BC491AA566A32A9AF7 /* Pods_Enablon_Response.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EE06CA6EE6408A717B7E6DE /* Pods_Enablon_Response.framework */; };
 		2DE7A840226946BC00F81ED4 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE7A83F226946BC00F81ED4 /* FirebaseService.swift */; };
 		2DE7A842226947D500F81ED4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DE7A841226947D500F81ED4 /* GoogleService-Info.plist */; };
+		2DE7A84422694AE000F81ED4 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE7A84322694AE000F81ED4 /* Models.swift */; };
 		99050A762217213B00417FB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99050A752217213B00417FB2 /* AppDelegate.swift */; };
 		99050A782217213B00417FB2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99050A772217213B00417FB2 /* ViewController.swift */; };
 		99050A7B2217213B00417FB2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99050A792217213B00417FB2 /* Main.storyboard */; };
@@ -17,15 +18,15 @@
 		99050A802217213C00417FB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99050A7F2217213C00417FB2 /* Assets.xcassets */; };
 		99050A832217213C00417FB2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99050A812217213C00417FB2 /* LaunchScreen.storyboard */; };
 		9933BDA02268E58B0001FB74 /* AlertDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9933BD9F2268E58B0001FB74 /* AlertDetailViewController.swift */; };
-		995CF63B2265068C00393E5A /* AlertsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995CF63A2265068C00393E5A /* AlertsListTableViewController.swift */; };
+		995CF63B2265068C00393E5A /* AlertsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995CF63A2265068C00393E5A /* AlertsTableViewController.swift */; };
 		995CF63D226513A600393E5A /* AlertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995CF63C226513A600393E5A /* AlertCell.swift */; };
-		99BC188C221CA27900E7D4A7 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BC188B221CA27900E7D4A7 /* Alert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		070CF42C200D2898641D7636 /* Pods-Enablon Response.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Enablon Response.debug.xcconfig"; path = "Target Support Files/Pods-Enablon Response/Pods-Enablon Response.debug.xcconfig"; sourceTree = "<group>"; };
 		2DE7A83F226946BC00F81ED4 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		2DE7A841226947D500F81ED4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2DE7A84322694AE000F81ED4 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		830BF15B0E44A726DF02E4AE /* Pods-Enablon Response.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Enablon Response.release.xcconfig"; path = "Target Support Files/Pods-Enablon Response/Pods-Enablon Response.release.xcconfig"; sourceTree = "<group>"; };
 		99050A722217213B00417FB2 /* Enablon Response.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Enablon Response.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		99050A752217213B00417FB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,9 +37,8 @@
 		99050A822217213C00417FB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99050A842217213C00417FB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9933BD9F2268E58B0001FB74 /* AlertDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDetailViewController.swift; sourceTree = "<group>"; };
-		995CF63A2265068C00393E5A /* AlertsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsListTableViewController.swift; sourceTree = "<group>"; };
+		995CF63A2265068C00393E5A /* AlertsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsTableViewController.swift; sourceTree = "<group>"; };
 		995CF63C226513A600393E5A /* AlertCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCell.swift; sourceTree = "<group>"; };
-		99BC188B221CA27900E7D4A7 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		9EE06CA6EE6408A717B7E6DE /* Pods_Enablon_Response.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Enablon_Response.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -87,9 +87,8 @@
 				2DE7A841226947D500F81ED4 /* GoogleService-Info.plist */,
 				99050A752217213B00417FB2 /* AppDelegate.swift */,
 				99050A772217213B00417FB2 /* ViewController.swift */,
-				99BC188B221CA27900E7D4A7 /* Alert.swift */,
 				99050A792217213B00417FB2 /* Main.storyboard */,
-				995CF63A2265068C00393E5A /* AlertsListTableViewController.swift */,
+				995CF63A2265068C00393E5A /* AlertsTableViewController.swift */,
 				9933BD9F2268E58B0001FB74 /* AlertDetailViewController.swift */,
 				995CF63C226513A600393E5A /* AlertCell.swift */,
 				99050A7F2217213C00417FB2 /* Assets.xcassets */,
@@ -97,6 +96,7 @@
 				99050A842217213C00417FB2 /* Info.plist */,
 				99050A7C2217213B00417FB2 /* Enablon_Response.xcdatamodeld */,
 				2DE7A83F226946BC00F81ED4 /* FirebaseService.swift */,
+				2DE7A84322694AE000F81ED4 /* Models.swift */,
 			);
 			path = "Enablon Response";
 			sourceTree = "<group>";
@@ -248,9 +248,9 @@
 				99050A782217213B00417FB2 /* ViewController.swift in Sources */,
 				2DE7A840226946BC00F81ED4 /* FirebaseService.swift in Sources */,
 				99050A7E2217213B00417FB2 /* Enablon_Response.xcdatamodeld in Sources */,
-				99BC188C221CA27900E7D4A7 /* Alert.swift in Sources */,
 				9933BDA02268E58B0001FB74 /* AlertDetailViewController.swift in Sources */,
-				995CF63B2265068C00393E5A /* AlertsListTableViewController.swift in Sources */,
+				2DE7A84422694AE000F81ED4 /* Models.swift in Sources */,
+				995CF63B2265068C00393E5A /* AlertsTableViewController.swift in Sources */,
 				99050A762217213B00417FB2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
