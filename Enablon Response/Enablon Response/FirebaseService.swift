@@ -15,7 +15,7 @@ class FirebaseService {
                 for doc in snapShot!.documents {
                     let dict = doc.data()
 
-                    if let alert = Alert(dict as NSDictionary) {
+                    if let alert = Alert(doc) {
                         data.append(alert)
                     }
                 }

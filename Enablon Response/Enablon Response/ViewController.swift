@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  Enablon Response
-//
-//  Created by Josh Kaplan on 2/15/19.
-//  Copyright © 2019 Josh Kaplan. All rights reserved.
-//
 
 import UIKit
 import Eureka
@@ -13,13 +6,9 @@ import CoreLocation
 
 class ViewController: FormViewController, CLLocationManagerDelegate {
     
-    
     let locationManager = CLLocationManager()
-    
 
-    
     override func viewDidLoad() {
-        
         locationManager.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
@@ -27,18 +16,10 @@ class ViewController: FormViewController, CLLocationManagerDelegate {
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
         }
-        
-        
-    
-        
-        
+
         navigationItem.title = "Enablon Response"
-        
         super.viewDidLoad()
-        
         createAlertForm()
-        
-    
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
