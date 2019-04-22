@@ -12,6 +12,7 @@ class AlertDetailViewController: UIViewController {
     @IBOutlet weak var severityColorView: UIView!
 
     var alert: Alert!
+    var responses: [Response] = []
     var listener: ListenerRegistration?
 
     deinit {
@@ -30,10 +31,10 @@ class AlertDetailViewController: UIViewController {
         //  you are using what is called 'magic strings' here - basically arbitrary strings
         //  that you are assuming your data will contain/be equal to.  This is a recipe for very brittle code.
         //  I took what you were using in the form builder: severity levels = [1,2,3] and turned this business
-        //  login into what is called an Enumerable.
-        //  Enumerable's are data types that can be 1 of a given set, basically the data type is
-        //  analogous to the definition of the adjective.
-        //  something like "DaysOfWeek" could be an example of that is enumerable
+        //  logic into what's called an Enumerable.
+        //  Enumerables are data types that can be one value of a given set, basically the data type is
+        //  analogous to the definition of the adjective:  something enumerable is countable and finite
+        //  something like "DaysOfWeek" could be an example of an enumerable data type
 
         //  YOUR OLD CODE:
 
@@ -50,6 +51,7 @@ class AlertDetailViewController: UIViewController {
         } else if self.alert.severity.title == "2 - Medium" {
             self.severityLabel.backgroundColor = UIColor.orange
             self.severityLabel.textColor = UIColor.white
+            //  let's say we add a fourth case: '4 - Chernobyl'.  All of a sudden, this if/else logic is incomplete
         } else {
             self.severityLabel.backgroundColor = UIColor.red
             self.severityLabel.textColor = UIColor.white
@@ -60,7 +62,8 @@ class AlertDetailViewController: UIViewController {
         //  Basically the iOS design paradigms are constructed in such a way that unless you are very well-versed in
         //  abstracting design patterns and utilizing data structures, you end up dropping a TON of non-viewController
         //  related logic into your view controllers.  Your code was about 10 lines of if/else and hard-coded data
-        //  which I was able to replace with 2 lines of reusable, flexible code.
+        //  which I was able to replace with 2 lines of reusable, flexible code.  I was guilty of MVC for a long time,
+        //  I am still recovering.  Lots of small files == good, a few 500-line files...not so good
 
         self.severityLabel.backgroundColor = self.alert.severity.backgroundColor
         self.severityLabel.textColor = self.alert.severity.textColor
@@ -70,7 +73,6 @@ class AlertDetailViewController: UIViewController {
                 return
             }
 
-            print(responses)
         }
     }
 }
