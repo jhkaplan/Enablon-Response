@@ -37,14 +37,15 @@ class AlertDetailViewController: UIViewController {
 
         //  YOUR OLD CODE:
 
-        /*
+        //  what happens if someone mistypes and you have "1 - low"?  Yikes!
         if self.alert.severity.title == "1 - Low" {
-            You can ascribe properties to your enumerable values, instead of hard-coding these colors, we
-            define a property on our enum called "textBackgroundColor".  Imagine this is a fully-fleshed-out
-            application and our designer says "hey, we're changing the shade of color for all HIGH severity
-            alerts to a brighter red.  Now we're stuck replacing however many hard-coded values you left us.
-
+//            You can ascribe properties to your enumerable values, instead of hard-coding these colors, we
+//            define a property on our enum called "textBackgroundColor".  Imagine this is a fully-fleshed-out
+//            application and our designer says "hey, we're changing the shade of color for all HIGH severity
+//            alerts to a brighter red.  Now we're stuck replacing however many hard-coded values you left us.
             self.severityLabel.backgroundColor = UIColor.yellow
+            //  see how there is no color set here and we're setting in the other two cases?
+            //  it's choppy logic that relies on the default text color
 
         } else if self.alert.severity.title == "2 - Medium" {
             self.severityLabel.backgroundColor = UIColor.orange
@@ -53,7 +54,6 @@ class AlertDetailViewController: UIViewController {
             self.severityLabel.backgroundColor = UIColor.red
             self.severityLabel.textColor = UIColor.white
         }
-        */
 
         //  MY REFACTOR -> see how all the logic for presentation is contained in the Severity enum?
         //  There is a pheonemon in iOS called 'MVC' and it stands for "Massive View Controllers".
