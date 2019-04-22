@@ -37,7 +37,7 @@ struct Alert {
     var severity: Severity = .low
     var latLong: String
     var id: String
-    var timestamp: TimeInterval
+    var timestamp: Timestamp
 
     init?(_ document: QueryDocumentSnapshot) {
         let dict = document.data()
@@ -55,7 +55,7 @@ struct Alert {
         self.name = name
         self.message = message
         self.latLong = latLong
-        self.timestamp = TimeInterval(syncOn.seconds)
+        self.timestamp = syncOn
 
         let charSet = CharacterSet.decimalDigits.inverted
 

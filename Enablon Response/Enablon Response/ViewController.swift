@@ -31,16 +31,15 @@ class ViewController: FormViewController, CLLocationManagerDelegate {
 
     
     func createAlertForm() {
-        
         let responseOption1Default = "I'm Safe"
         let responseOption2Default = "I Need Assistance"
         
         guard let currentDeviceCoordinate = locationManager.location?.coordinate else { return }
         guard let currentLatt  = locationManager.location?.coordinate.latitude else { return }
         guard let currentLong = locationManager.location?.coordinate.longitude else { return }
+
         let currentLocationString = "CLLocation(latitude: \(currentLatt), longitude: \(currentLong))"
-        print(currentLocationString)
-        
+
         form +++ Section("Alert Info")
             
             <<< TextRow("AlertName") { row in
@@ -57,7 +56,6 @@ class ViewController: FormViewController, CLLocationManagerDelegate {
                 $0.tag = "Severity"
                 $0.selectorTitle = "Select Severity"
                 $0.options = ["1 - Low","2 - Medium","3 - High"]
-//                $0.value = "Two"    // initially selected
         }
             <<< LocationRow("EventLocation"){
                 $0.title = "Event GPS Location"
@@ -65,9 +63,6 @@ class ViewController: FormViewController, CLLocationManagerDelegate {
         }
         
         form +++ Section("Response Options")
-//            <<< CheckRow("ResponseRequiredBool1") { row in
-//                row.title = "Response Required?"
-//        }
             <<< SwitchRow("ResponseRequiredBool") { row in
                 row.title = "Response Required?"
             }
@@ -98,39 +93,43 @@ class ViewController: FormViewController, CLLocationManagerDelegate {
         form +++ Section()
             <<< ButtonRow() {
                 $0.title = "Send Alert"
-                }.onCellSelection({ (cell, row) in
-                    let alertMessage: TextAreaRow! = self.form.rowBy(tag: "AlertMessage")
+                }.onCellSelection({ [weak self] (cell, row) in
+                    guard let _ = self else {
+                        return
+                    }
+
+                    let alertMessage: TextAreaRow! = self!.form.rowBy(tag: "AlertMessage")
                     let messageValue = alertMessage!.value
                     
-                    let nameRow: TextRow! = self.form.rowBy(tag: "AlertName")
+                    let nameRow: TextRow! = self!.form.rowBy(tag: "AlertName")
                     let nameValue = nameRow!.value
                     
-                    let locationGPSSelection: LocationRow! = self.form.rowBy(tag: "EventLocation")
+                    let locationGPSSelection: LocationRow! = self!.form.rowBy(tag: "EventLocation")
                     guard let locationGPSLatValue  = locationGPSSelection!.value?.coordinate.latitude else { return }
                     guard let locationGPSLonValue  = locationGPSSelection!.value?.coordinate.longitude else { return }
                     let locationGPSCoordinates = "\(locationGPSLatValue),\(locationGPSLonValue)"
                     
-                    let responseRow: SwitchRow! = self.form.rowBy(tag: "ResponseRequiredBool")
+                    let responseRow: SwitchRow! = self!.form.rowBy(tag: "ResponseRequiredBool")
                     let responseSelection = responseRow!.value ?? false
                     
-                    let responseOpt1Row: TextRow! = self.form.rowBy(tag: "Response1")
+                    let responseOpt1Row: TextRow! = self!.form.rowBy(tag: "Response1")
                     guard let responseOpt1 = responseOpt1Row!.value else { return }
                     
-                    let responseOpt2Row: TextRow! = self.form.rowBy(tag: "Response2")
+                    let responseOpt2Row: TextRow! = self!.form.rowBy(tag: "Response2")
                     guard let responseOpt2 = responseOpt2Row!.value else { return }
 
                     
-                    let locationSelection = self.form.rowBy(tag: "recipient").flatMap({ (row) -> String? in
+                    let locationSelection = self!.form.rowBy(tag: "recipient").flatMap({ (row) -> String? in
                         if let row = row as? MultipleSelectorRow<String> {
                             return row.value?.joined(separator: ",")
                         }
                         return nil
                     })
                     
-                    let selectedGPSLocationRow: LocationRow! = self.form.rowBy(tag: "EventLocation")
+                    let selectedGPSLocationRow: LocationRow! = self!.form.rowBy(tag: "EventLocation")
                     guard let selectedGPSLocation = selectedGPSLocationRow!.value else { return }
                     
-                    guard let alertSeverity = self.form.rowBy(tag: "Severity")?.baseValue else { return }
+                    guard let alertSeverity = self!.form.rowBy(tag: "Severity")?.baseValue else { return }
                     
                     print(locationSelection ?? "Empty")
 
@@ -138,46 +137,62 @@ class ViewController: FormViewController, CLLocationManagerDelegate {
                     /* Send Alert */
                     
                     let alert = UIAlertController(title: "Alert Sent", message: "Your alert named \(nameValue!) has been sent!", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
+
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] (action) in
+                        guard let _ = self else {
+                            return
+                        }
+
+                        self!.navigationController?.popViewController(animated: true)
+                    }))
                     
-                    
+                    self!.present(alert, animated: true, completion: nil)
                     /* End Send Alert */
                     
                     /* Clear Form */
                     
-                    self.form.rowBy(tag: "AlertMessage")?.baseValue = ""
-                    self.form.rowBy(tag: "AlertName")?.baseValue = ""
-                    self.form.rowBy(tag: "ResponseRequiredBool")?.baseValue = nil
-                    self.form.rowBy(tag: "recipient")?.baseValue = ""
-                    self.form.rowBy(tag: "Severity")?.baseValue = ""
-                    self.form.rowBy(tag: "Response1")?.baseValue = responseOption1Default
-                    self.form.rowBy(tag: "Response2")?.baseValue = responseOption2Default
-                    self.form.rowBy(tag: "EventLocation")?.baseValue = CLLocation(latitude: currentLatt, longitude: currentLong)
+                    self!.form.rowBy(tag: "AlertMessage")?.baseValue = ""
+                    self!.form.rowBy(tag: "AlertName")?.baseValue = ""
+                    self!.form.rowBy(tag: "ResponseRequiredBool")?.baseValue = nil
+                    self!.form.rowBy(tag: "recipient")?.baseValue = ""
+                    self!.form.rowBy(tag: "Severity")?.baseValue = ""
+                    self!.form.rowBy(tag: "Response1")?.baseValue = responseOption1Default
+                    self!.form.rowBy(tag: "Response2")?.baseValue = responseOption2Default
+                    self!.form.rowBy(tag: "EventLocation")?.baseValue = CLLocation(latitude: currentLatt, longitude: currentLong)
                     
                     
                     func postToZapier() {
-                        /* Send Zapier Webhook Call */
+                        let alertParameters = [
+                            "alertMessageText": messageValue!,
+                            "alertName": nameValue!,
+                            "alertEventLocationGPS": "\(locationGPSCoordinates)",
+                            "alertRecipientLocation": locationSelection,
+                            "responseRequired": responseSelection,
+                            "severity": alertSeverity,
+                            "responseOpt1": responseOpt1,
+                            "responseOpt2": responseOpt2
+                        ] as [String : Any]
                         
-                        let alertParameters = ["alertMessageText": messageValue!, "alertName": nameValue!, "alertEventLocationGPS": "\(locationGPSCoordinates)", "alertRecipientLocation": locationSelection, "responseRequired": responseSelection, "severity": alertSeverity, "responseOpt1": responseOpt1, "responseOpt2": responseOpt2] as [String : Any]
-                        
-                        guard let devURL = URL(string: "https://hooks.zapier.com/hooks/catch/2853627/p5e7iz/") else { return }
-                        
-                        guard let prodURL = URL(string: "https://hooks.zapier.com/hooks/catch/2853627/p2moc4/") else { return }
+//                        guard let devURL = URL(string: "https://hooks.zapier.com/hooks/catch/2853627/p5e7iz/") else {
+//                            return
+//                        }
+                        guard let prodURL = URL(string: "https://hooks.zapier.com/hooks/catch/2853627/p2moc4/") else {
+                            return
+                        }
                         
                         var request =  URLRequest(url: prodURL)
                         
                         request.httpMethod = "POST"
+
                         guard let httpBody = try? JSONSerialization.data(withJSONObject: alertParameters, options: []) else {
-                            return }
+                            return
+                        }
+
                         request.httpBody = httpBody
                         
                         let session = URLSession.shared
+
                         session.dataTask(with: request) { (data, response, error) in
-                            if let response = response {
-                                print(response)
-                            }
-                            
                             if let data = data {
                                 do {
                                     let json = try JSONSerialization.jsonObject(with: data, options: [])
@@ -186,15 +201,11 @@ class ViewController: FormViewController, CLLocationManagerDelegate {
                                     print(error)
                                 }
                             }
-                            }.resume()
-                        
+                        }.resume()
                     }
                     
                 postToZapier()
-
-                })
-
-        
+            })
     }
     
 //    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -340,12 +351,11 @@ public class MapViewController : UIViewController, TypedRowControllerType, MKMap
         if let value = row.value {
             let region = MKCoordinateRegion(center: value.coordinate, latitudinalMeters: 400, longitudinalMeters: 400)
             mapView.setRegion(region, animated: true)
-        }
-        else{
+        } else {
             mapView.showsUserLocation = true
         }
+
         updateTitle()
-        
     }
     
     public override func viewWillAppear(_ animated: Bool) {
