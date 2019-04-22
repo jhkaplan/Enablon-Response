@@ -11,5 +11,4 @@ class AlertCell: UITableViewCell {
         self.titleLabel.text = alert.name
         self.messageLabel.text = alert.message
     }
-
 }

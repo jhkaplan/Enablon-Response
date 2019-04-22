@@ -37,6 +37,7 @@ struct Alert {
     var severity: Severity = .low
     var latLong: String
     var id: String
+    var timestamp: TimeInterval
 
     init?(_ document: QueryDocumentSnapshot) {
         let dict = document.data()
@@ -45,7 +46,8 @@ struct Alert {
             let name = dict["name"] as? String,
             let message = dict["message"] as? String,
             let severityString = dict["severity"] as? String,
-            let latLong = dict["eventLocationGPS"] as? String
+            let latLong = dict["eventLocationGPS"] as? String,
+            let syncOn = dict["syncOn"] as? Timestamp
         else {
             return nil
         }
@@ -53,13 +55,15 @@ struct Alert {
         self.name = name
         self.message = message
         self.latLong = latLong
+        self.timestamp = TimeInterval(syncOn.seconds)
 
         let charSet = CharacterSet.decimalDigits.inverted
 
         if
             let severityInt = Int(severityString.components(separatedBy: charSet).joined(separator: "")) as Int?,
             //  these are zero-indexed, Firebase data isn't
-            let severity = Severity.init(rawValue: severityInt - 1) {
+            let severity = Severity.init(rawValue: severityInt - 1)
+        {
             self.severity = severity
         }
 

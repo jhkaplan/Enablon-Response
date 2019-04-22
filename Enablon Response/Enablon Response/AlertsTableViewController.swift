@@ -66,7 +66,7 @@ extension AlertsTableViewController {
         let db = Firestore.firestore()
         var data: [Alert] = []
 
-        db.collection("safetyAlerts").getDocuments { (snapShot, err) in
+        db.collection("safetyAlerts").order(by: "syncOn", descending: true).getDocuments { (snapShot, err) in
             if let _ = err {
                 completion(nil)
             } else {
@@ -85,7 +85,7 @@ extension AlertsTableViewController {
 
     }
 
-    func listenForNewAlerts() {
+    func listenForNewAlerts(latestTimestamp: TimeInterval) {
         let db = Firestore.firestore()
 
         db.collection("safetyAlerts")
