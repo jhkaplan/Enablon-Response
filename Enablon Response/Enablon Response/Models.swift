@@ -3,13 +3,41 @@ import Foundation
 import FirebaseFirestore
 import FirebaseCore
 
+struct Response {
+    var isSafe: Bool
+    var recipientName: String
+    var recipientNumber: String
+    var id: String
+    var timestamp: Timestamp
+
+    init?(_ document: QueryDocumentSnapshot) {
+        let dict = document.data()
+
+        guard
+            let name = dict["recipientName"] as? String,
+            let number = dict["recipient"] as? String,
+            let isSafe = dict["response"] as? Bool,
+            let syncOn = dict["syncOn"] as? Timestamp
+        else {
+            return nil
+        }
+
+        self.recipientName = name
+        self.recipientNumber = number
+        self.timestamp = syncOn
+        self.isSafe = isSafe
+
+        self.id = document.documentID
+    }
+}
+
 struct Alert {
     enum Severity: Int {
         case low
         case medium
         case high
 
-        var color: UIColor {
+        var backgroundColor: UIColor {
             switch self {
                 case .low:
                     return .yellow
@@ -17,6 +45,15 @@ struct Alert {
                     return .orange
                 case .high:
                     return .red
+            }
+        }
+
+        var textColor: UIColor {
+            switch self {
+            case .low, .medium:
+                return .black
+            case .high:
+                return .white
             }
         }
 
