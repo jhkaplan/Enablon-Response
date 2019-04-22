@@ -6,13 +6,19 @@ class AlertDetailViewController: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
-    @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var severityLabel: UILabel!
 
-    @IBOutlet weak var severityColorView: UIView!
+    @IBOutlet weak var tableView: UITableView!
 
     var alert: Alert!
-    var responses: [Response] = []
+    var responses: [Response] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+
     var listener: ListenerRegistration?
 
     deinit {
@@ -27,6 +33,9 @@ class AlertDetailViewController: UIViewController {
         self.nameLabel.text = "\(self.alert.name)"
         self.messageLabel.text = "\(self.alert.message)"
         self.severityLabel.text =  "\(self.alert.severity.title)"
+
+        let nib = UINib(nibName: "ResponseTableViewCell", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: ResponseTableViewCell.identifier)
 
         //  you are using what is called 'magic strings' here - basically arbitrary strings
         //  that you are assuming your data will contain/be equal to.  This is a recipe for very brittle code.
@@ -73,7 +82,24 @@ class AlertDetailViewController: UIViewController {
                 return
             }
 
+            self!.responses = responses
+
         }
+    }
+}
+
+//  UITableView stuff
+extension AlertDetailViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.responses.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let response = self.responses[indexPath.row]
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: ResponseTableViewCell.identifier) as! ResponseTableViewCell
+        cell.configure(withResponse: response)
+
+        return cell
     }
 }
 

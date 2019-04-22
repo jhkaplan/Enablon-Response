@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1B1CF3BC491AA566A32A9AF7 /* Pods_Enablon_Response.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EE06CA6EE6408A717B7E6DE /* Pods_Enablon_Response.framework */; };
+		2DCA371C226E77EE001A96FE /* ResponseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCA371A226E77EE001A96FE /* ResponseTableViewCell.swift */; };
+		2DCA371D226E77EE001A96FE /* ResponseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DCA371B226E77EE001A96FE /* ResponseTableViewCell.xib */; };
 		2DE7A842226947D500F81ED4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DE7A841226947D500F81ED4 /* GoogleService-Info.plist */; };
 		2DE7A84422694AE000F81ED4 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE7A84322694AE000F81ED4 /* Models.swift */; };
 		99050A762217213B00417FB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99050A752217213B00417FB2 /* AppDelegate.swift */; };
@@ -23,6 +25,8 @@
 
 /* Begin PBXFileReference section */
 		070CF42C200D2898641D7636 /* Pods-Enablon Response.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Enablon Response.debug.xcconfig"; path = "Target Support Files/Pods-Enablon Response/Pods-Enablon Response.debug.xcconfig"; sourceTree = "<group>"; };
+		2DCA371A226E77EE001A96FE /* ResponseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseTableViewCell.swift; sourceTree = "<group>"; };
+		2DCA371B226E77EE001A96FE /* ResponseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResponseTableViewCell.xib; sourceTree = "<group>"; };
 		2DE7A841226947D500F81ED4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2DE7A84322694AE000F81ED4 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		830BF15B0E44A726DF02E4AE /* Pods-Enablon Response.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Enablon Response.release.xcconfig"; path = "Target Support Files/Pods-Enablon Response/Pods-Enablon Response.release.xcconfig"; sourceTree = "<group>"; };
@@ -52,6 +56,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2DCA3719226E77C3001A96FE /* Table cells */ = {
+			isa = PBXGroup;
+			children = (
+				2DCA371A226E77EE001A96FE /* ResponseTableViewCell.swift */,
+				2DCA371B226E77EE001A96FE /* ResponseTableViewCell.xib */,
+			);
+			path = "Table cells";
+			sourceTree = "<group>";
+		};
 		82C349F8A9719FB236111F2F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +95,7 @@
 		99050A742217213B00417FB2 /* Enablon Response */ = {
 			isa = PBXGroup;
 			children = (
+				2DCA3719226E77C3001A96FE /* Table cells */,
 				2DE7A841226947D500F81ED4 /* GoogleService-Info.plist */,
 				99050A752217213B00417FB2 /* AppDelegate.swift */,
 				99050A772217213B00417FB2 /* ViewController.swift */,
@@ -170,6 +184,7 @@
 				2DE7A842226947D500F81ED4 /* GoogleService-Info.plist in Resources */,
 				99050A802217213C00417FB2 /* Assets.xcassets in Resources */,
 				99050A7B2217213B00417FB2 /* Main.storyboard in Resources */,
+				2DCA371D226E77EE001A96FE /* ResponseTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DCA371C226E77EE001A96FE /* ResponseTableViewCell.swift in Sources */,
 				995CF63D226513A600393E5A /* AlertCell.swift in Sources */,
 				99050A782217213B00417FB2 /* ViewController.swift in Sources */,
 				99050A7E2217213B00417FB2 /* Enablon_Response.xcdatamodeld in Sources */,

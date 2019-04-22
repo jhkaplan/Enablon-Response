@@ -10,6 +10,11 @@ struct Response {
     var id: String
     var timestamp: Timestamp
 
+    var statusColor: UIColor {
+        let green = UIColor(red: 0.071, green: 0.396, blue: 0.149, alpha: 1.00)
+        return self.isSafe ? green : .red
+    }
+
     init?(_ document: QueryDocumentSnapshot) {
         let dict = document.data()
 
