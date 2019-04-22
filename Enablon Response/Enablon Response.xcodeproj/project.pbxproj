@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1B1CF3BC491AA566A32A9AF7 /* Pods_Enablon_Response.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EE06CA6EE6408A717B7E6DE /* Pods_Enablon_Response.framework */; };
-		2DE7A840226946BC00F81ED4 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE7A83F226946BC00F81ED4 /* FirebaseService.swift */; };
 		2DE7A842226947D500F81ED4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DE7A841226947D500F81ED4 /* GoogleService-Info.plist */; };
 		2DE7A84422694AE000F81ED4 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE7A84322694AE000F81ED4 /* Models.swift */; };
 		99050A762217213B00417FB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99050A752217213B00417FB2 /* AppDelegate.swift */; };
@@ -24,7 +23,6 @@
 
 /* Begin PBXFileReference section */
 		070CF42C200D2898641D7636 /* Pods-Enablon Response.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Enablon Response.debug.xcconfig"; path = "Target Support Files/Pods-Enablon Response/Pods-Enablon Response.debug.xcconfig"; sourceTree = "<group>"; };
-		2DE7A83F226946BC00F81ED4 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		2DE7A841226947D500F81ED4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2DE7A84322694AE000F81ED4 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		830BF15B0E44A726DF02E4AE /* Pods-Enablon Response.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Enablon Response.release.xcconfig"; path = "Target Support Files/Pods-Enablon Response/Pods-Enablon Response.release.xcconfig"; sourceTree = "<group>"; };
@@ -95,7 +93,6 @@
 				99050A812217213C00417FB2 /* LaunchScreen.storyboard */,
 				99050A842217213C00417FB2 /* Info.plist */,
 				99050A7C2217213B00417FB2 /* Enablon_Response.xcdatamodeld */,
-				2DE7A83F226946BC00F81ED4 /* FirebaseService.swift */,
 				2DE7A84322694AE000F81ED4 /* Models.swift */,
 			);
 			path = "Enablon Response";
@@ -246,7 +243,6 @@
 			files = (
 				995CF63D226513A600393E5A /* AlertCell.swift in Sources */,
 				99050A782217213B00417FB2 /* ViewController.swift in Sources */,
-				2DE7A840226946BC00F81ED4 /* FirebaseService.swift in Sources */,
 				99050A7E2217213B00417FB2 /* Enablon_Response.xcdatamodeld in Sources */,
 				9933BDA02268E58B0001FB74 /* AlertDetailViewController.swift in Sources */,
 				2DE7A84422694AE000F81ED4 /* Models.swift in Sources */,

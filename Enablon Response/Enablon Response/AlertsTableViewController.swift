@@ -1,5 +1,6 @@
 
 import UIKit
+import FirebaseFirestore
 
 struct CellData {
     let alertName : String?
@@ -20,8 +21,9 @@ class AlertsTableViewController: UITableViewController {
         super.viewDidLoad()
 
         self.title = "Safety Alerts"
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
-        FirebaseService.getAllAlerts { [weak self] (data) in
+        self.getAllAlerts { [weak self] (data) in
             guard let alerts = data, let _ = self else {
                 print("failed to fetch data")
                 return
@@ -32,13 +34,12 @@ class AlertsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return self.alerts != nil ? self.alerts!.count : 0
     }
 
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AlertCell", for: indexPath) as! AlertCell
+        cell.tag = indexPath.row
 
         let alert = self.alerts![indexPath.row]
         cell.configure(withAlert: alert)
@@ -46,13 +47,47 @@ class AlertsTableViewController: UITableViewController {
         return cell
     }
 
-    /*
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+        guard let cell = sender as? UITableViewCell else {
+            return
+        }
 
+        if let detailVC = segue.destination as? AlertDetailViewController {
+            let alert = self.alerts![cell.tag]
+            detailVC.alert = alert
+        }
+    }
+}
+
+//  Firebase stuff
+extension AlertsTableViewController {
+
+    func getAllAlerts(completion: @escaping([Alert]?) -> ()) {
+        let db = Firestore.firestore()
+        var data: [Alert] = []
+
+        db.collection("safetyAlerts").getDocuments { (snapShot, err) in
+            if let _ = err {
+                completion(nil)
+            } else {
+                for doc in snapShot!.documents {
+                    if let alert = Alert(doc) {
+                        data.append(alert)
+                    }
+                }
+
+                completion(data)
+            }
+        }
+    }
+
+    func newAlertReceived(alert: Alert) {
+
+    }
+
+    func listenForNewAlerts() {
+        let db = Firestore.firestore()
+
+        db.collection("safetyAlerts")
+    }
 }
