@@ -17,11 +17,22 @@ class AlertDetailViewController: UIViewController {
 
         self.title = "Alert Details"
 
-        self.nameLabel.text = "Name: \(self.alert.name)"
-        self.messageLabel.text = "Message: \(self.alert.message)"
-        self.locationLabel.text = "Location: \(self.alert.latLong)"
-        self.severityLabel.text =  "Severity: \(self.alert.severity.title)"
+        self.nameLabel.text = "\(self.alert.name)"
+        self.messageLabel.text = "\(self.alert.message)"
+//        self.locationLabel.text = "\(self.alert.latLong)"
+        self.severityLabel.text =  "\(self.alert.severity.title)"
+        
+        if self.alert.severity.title == "1 - Low" {
+            self.severityLabel.backgroundColor = UIColor.yellow
+            print("1-low")
+        } else if self.alert.severity.title == "2 - Medium" {
+            self.severityLabel.backgroundColor = UIColor.orange
+            self.severityLabel.textColor = UIColor.white
+        } else {
+            self.severityLabel.backgroundColor = UIColor.red
+            self.severityLabel.textColor = UIColor.white
+        }
 
-        self.severityColorView.backgroundColor = self.alert.severity.color
+//        self.severityColorView.backgroundColor = self.alert.severity.color
     }
 }
