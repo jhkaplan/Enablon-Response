@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -38,22 +38,22 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Don-lg-pDK">
-                        <rect key="frame" x="482" y="73.5" width="50" height="50"/>
+                        <rect key="frame" x="493" y="83" width="31" height="31"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="0rb-cv-Jvb"/>
-                            <constraint firstAttribute="width" constant="50" id="D14-m5-Kku"/>
+                            <constraint firstAttribute="height" constant="31" id="0rb-cv-Jvb"/>
+                            <constraint firstAttribute="width" constant="31" id="D14-m5-Kku"/>
                         </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="HaB-dF-yAM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="1qT-L3-3JS"/>
-                    <constraint firstItem="Don-lg-pDK" firstAttribute="top" secondItem="USq-9D-jZy" secondAttribute="bottom" constant="8" id="7eP-XX-2iI"/>
+                    <constraint firstItem="Don-lg-pDK" firstAttribute="top" secondItem="USq-9D-jZy" secondAttribute="bottom" constant="17.5" id="7eP-XX-2iI"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Don-lg-pDK" secondAttribute="bottom" constant="16" id="G3o-fZ-4h8"/>
                     <constraint firstItem="USq-9D-jZy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="JQ5-hA-4zM"/>
                     <constraint firstItem="HaB-dF-yAM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="N4S-Jp-N4R"/>
                     <constraint firstItem="USq-9D-jZy" firstAttribute="top" secondItem="HaB-dF-yAM" secondAttribute="bottom" constant="8" id="T1d-Fl-dux"/>
                     <constraint firstAttribute="trailing" secondItem="HaB-dF-yAM" secondAttribute="trailing" constant="20" id="Ucc-uS-jcg"/>
-                    <constraint firstAttribute="trailing" secondItem="Don-lg-pDK" secondAttribute="trailing" constant="20" id="YCZ-W8-uRq"/>
+                    <constraint firstAttribute="trailing" secondItem="Don-lg-pDK" secondAttribute="trailing" constant="28" id="YCZ-W8-uRq"/>
                     <constraint firstItem="pgZ-rs-qzh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="fvV-Y2-dxz"/>
                     <constraint firstAttribute="trailing" secondItem="USq-9D-jZy" secondAttribute="trailing" constant="20" id="jb5-OS-Emh"/>
                     <constraint firstItem="pgZ-rs-qzh" firstAttribute="centerY" secondItem="Don-lg-pDK" secondAttribute="centerY" id="vk9-RN-HPH"/>

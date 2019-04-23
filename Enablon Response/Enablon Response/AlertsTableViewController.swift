@@ -26,7 +26,7 @@ class AlertsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "Safety Alerts"
+        self.title = "Enablon Alerts"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         self.getAllAlerts { [weak self] (data) in
