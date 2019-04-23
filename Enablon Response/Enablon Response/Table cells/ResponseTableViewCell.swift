@@ -10,18 +10,17 @@ class ResponseTableViewCell: UITableViewCell {
     @IBOutlet weak var middleLabel: UILabel!
     @IBOutlet weak var bottomLabel: UILabel!
 
+    @IBOutlet weak var statusImageView: UIImageView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
-
-        //  this is constant, and I prefer to do styling here, and do layout in the Interface builder
-        self.bottomLabel.textColor = .white
     }
 
-    func configure(withResponse response: Response) {
-        self.topLabel.text = "Name: \(response.recipientName)"
-        self.middleLabel.text = "Number: \(response.recipientNumber)"
+    func configure(withRecipient recipient: ResponseRecipient, isSafe: Bool?) {
+        self.topLabel.text = "Name: \(recipient.recipientName)"
+        self.middleLabel.text = "Number: \(recipient.recipientDisplayNumber)"
 
-        self.bottomLabel.text = "Response: " + (response.isSafe ? "safe" : "not safe")
-        self.bottomLabel.backgroundColor = response.statusColor
+        self.statusImageView.image = ResponseRecipient.statusImage(status: isSafe)
+        self.bottomLabel.text = "Response status: \(ResponseRecipient.statusText(status: isSafe))"
     }
 }

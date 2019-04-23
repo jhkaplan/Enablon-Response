@@ -13,7 +13,8 @@ class AlertDetailViewController: UIViewController {
     var parentRef: DocumentReference!
 
     var alert: Alert!
-    var responses: [Response] = [] {
+
+    var responses: [ResponseRecipient] = [] {
         didSet {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -57,10 +58,10 @@ class AlertDetailViewController: UIViewController {
 
         //  what happens if someone mistypes and you have "1 - low"?  Yikes!
         if self.alert.severity.title == "1 - Low" {
-//            You can ascribe properties to your enumerable values, instead of hard-coding these colors, we
-//            define a property on our enum called "textBackgroundColor".  Imagine this is a fully-fleshed-out
-//            application and our designer says "hey, we're changing the shade of color for all HIGH severity
-//            alerts to a brighter red.  Now we're stuck replacing however many hard-coded values you left us.
+            //  You can ascribe properties to your enumerable values, instead of hard-coding these colors, we
+            //  define a property on our enum called "textBackgroundColor".  Imagine this is a fully-fleshed-out
+            //  application and our designer says "hey, we're changing the shade of color for all HIGH severity
+            //  alerts to a brighter red.  Now we're stuck replacing however many hard-coded values you left us.
             self.severityLabel.backgroundColor = UIColor.yellow
             //  see how there is no color set here and we're setting in the other two cases?
             //  it's choppy logic that relies on the default text color
@@ -95,7 +96,7 @@ class AlertDetailViewController: UIViewController {
             var mostRecentTimestamp = Timestamp(date: Date())
 
             if let lastResponse = responses.last {
-                mostRecentTimestamp = lastResponse.timestamp
+                mostRecentTimestamp = lastResponse.timestamp!
             }
 
             self!.listenForNewResponses(latestTimestamp: mostRecentTimestamp)
@@ -106,13 +107,19 @@ class AlertDetailViewController: UIViewController {
 //  UITableView stuff
 extension AlertDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.responses.count
+        return self.alert.recipients.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let response = self.responses[indexPath.row]
+        let recipient = self.alert.recipients[indexPath.row]
         let cell = self.tableView.dequeueReusableCell(withIdentifier: ResponseTableViewCell.identifier) as! ResponseTableViewCell
-        cell.configure(withResponse: response)
+
+        let isSafe = self.responses.filter { (rec) -> Bool in
+            let isMatch = rec.recipientNumber == recipient.recipientNumber
+            return isMatch
+        }.first?.isSafe
+
+        cell.configure(withRecipient: recipient, isSafe: isSafe)
 
         return cell
     }
@@ -125,9 +132,9 @@ extension AlertDetailViewController {
         return self.alert.id.replacingOccurrences(of: "/safetyAlerts/", with: "")
     }
 
-    func getAllResponses(completion: @escaping([Response]?) -> ()) {
+    func getAllResponses(completion: @escaping([ResponseRecipient]?) -> ()) {
         let db = Firestore.firestore()
-        var data: [Response] = []
+        var data: [ResponseRecipient] = []
 
         db.collection("safetyAlertsResponses")
             .order(by: "syncOn", descending: false)
@@ -137,7 +144,7 @@ extension AlertDetailViewController {
                     completion(nil)
                 } else {
                     for doc in snapShot!.documents {
-                        if let response = Response(doc) {
+                        if let response = ResponseRecipient(doc) {
                             data.append(response)
                         }
                     }
@@ -147,15 +154,10 @@ extension AlertDetailViewController {
             }
     }
 
-    func newResponseReceived(response: Response) {
+    func newResponseReceived(response: ResponseRecipient) {
         DispatchQueue.main.async {
-            self.tableView.beginUpdates()
             self.responses.append(response)
-
-            let path = IndexPath(row: self.responses.count - 1, section: 0)
-
-            self.tableView.insertRows(at: [path], with: .left)
-            self.tableView.endUpdates()
+            self.tableView.reloadData()
         }
     }
 
@@ -174,7 +176,7 @@ extension AlertDetailViewController {
                     print("not good")
                 } else {
                     for doc in snapShot!.documents {
-                        if let response = Response(doc) {
+                        if let response = ResponseRecipient(doc) {
                             self!.newResponseReceived(response: response)
                         }
                     }
