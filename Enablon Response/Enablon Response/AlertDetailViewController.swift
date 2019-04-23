@@ -10,6 +10,8 @@ class AlertDetailViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
+    var parentRef: DocumentReference!
+
     var alert: Alert!
     var responses: [Response] = [] {
         didSet {
@@ -27,6 +29,12 @@ class AlertDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        //  this could be put in an init method, but we're using segues...
+        //  which I don't normally like to use for this exact reason
+        let db = Firestore.firestore()
+        let parentId = self.getParentDocumentId()
+        self.parentRef = db.collection("safetyAlerts").document(parentId)
 
         self.title = "Alert Details"
 
@@ -84,6 +92,13 @@ class AlertDetailViewController: UIViewController {
 
             self!.responses = responses
 
+            var mostRecentTimestamp = Timestamp(date: Date())
+
+            if let lastResponse = responses.last {
+                mostRecentTimestamp = lastResponse.timestamp
+            }
+
+            self!.listenForNewResponses(latestTimestamp: mostRecentTimestamp)
         }
     }
 }
@@ -114,11 +129,9 @@ extension AlertDetailViewController {
         let db = Firestore.firestore()
         var data: [Response] = []
 
-        let parentId = self.getParentDocumentId()
-        let parentRef = db.collection("safetyAlerts").document(parentId)
-
-        db.collection("safetyAlertsResponses").order(by: "syncOn", descending: true)
-            .whereField("safetyAlert", isEqualTo: parentRef)
+        db.collection("safetyAlertsResponses")
+            .order(by: "syncOn", descending: false)
+            .whereField("safetyAlert", isEqualTo: self.parentRef)
             .getDocuments { (snapShot, err) in
                 if let _ = err {
                     completion(nil)
@@ -134,39 +147,38 @@ extension AlertDetailViewController {
             }
     }
 
-//    func newResponseReceived(response: Response) {
-//        print("got one!")
-//
-//        DispatchQueue.main.async {
-////            self.tableView.beginUpdates()
-////            self.alerts.insert(alert, at: 0)
-////
-////            let path = IndexPath(row: 0, section: 0)
-////
-////            self.tableView.insertRows(at: [path], with: .left)
-////            self.tableView.endUpdates()
-//        }
-//    }
+    func newResponseReceived(response: Response) {
+        DispatchQueue.main.async {
+            self.tableView.beginUpdates()
+            self.responses.append(response)
 
-//    func listenForNewResponses(latestTimestamp: Timestamp) {
-//        let db = Firestore.firestore()
-//
-//        self.listener = db.collection("safetyAlertsResponses")
-//            .addSnapshotListener { [weak self] (snapShot, err) in
-//                guard let _ = self else {
-//                    return
-//                }
-//
-//                if let _ = err {
-//                    print("error")
-//                    return
-//                } else {
-//                    for doc in snapShot!.documents {
-//                        if let response = Response(doc) {
-//                            self!.newResponseReceived(response: response)
-//                        }
-//                    }
-//                }
-//        }
-//    }
+            let path = IndexPath(row: self.responses.count - 1, section: 0)
+
+            self.tableView.insertRows(at: [path], with: .left)
+            self.tableView.endUpdates()
+        }
+    }
+
+    func listenForNewResponses(latestTimestamp: Timestamp) {
+        let db = Firestore.firestore()
+
+        self.listener = db.collection("safetyAlertsResponses")
+            .whereField("syncOn", isGreaterThan: latestTimestamp)
+            .whereField("safetyAlert", isEqualTo: self.parentRef)
+            .addSnapshotListener { [weak self] (snapShot, err) in
+                guard let _ = self else {
+                    return
+                }
+
+                if let _ = err {
+                    print("not good")
+                } else {
+                    for doc in snapShot!.documents {
+                        if let response = Response(doc) {
+                            self!.newResponseReceived(response: response)
+                        }
+                    }
+                }
+        }
+    }
 }
