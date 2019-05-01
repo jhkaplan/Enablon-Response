@@ -37,6 +37,7 @@ class AlertDetailViewController: UIViewController {
         let parentId = self.getParentDocumentId()
         self.parentRef = db.collection("safetyAlerts").document(parentId)
 
+//        self.title = "\(self.alert.name)"
         self.title = "Alert Details"
 
         self.nameLabel.text = "\(self.alert.name)"

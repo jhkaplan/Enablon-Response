@@ -17,7 +17,7 @@ class ViewController: FormViewController, CLLocationManagerDelegate {
             locationManager.startUpdatingLocation()
         }
 
-        navigationItem.title = "Enablon Response"
+        navigationItem.title = "Create Alert"
         super.viewDidLoad()
         createAlertForm()
     }
